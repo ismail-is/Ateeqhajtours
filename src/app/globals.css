@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-navy-900: #0a1b24;
+  --color-islamic-green: #b2d235;
+  --color-gold-500: #eeb012;
+  --color-cream-50: #fafaf9;
+
+  --font-playfair: var(--font-playfair);
+  --font-poppins: var(--font-poppins);
+}
+
+@layer base {
+  body {
+    @apply bg-cream-50 text-navy-900 font-poppins;
+  }
+}
