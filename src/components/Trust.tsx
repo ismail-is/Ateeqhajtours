@@ -28,7 +28,7 @@ const features = [
 
 export default function Trust() {
   return (
-    <section className="bg-[#0b1b26] border-t border-b border-white/10 relative z-20 overflow-hidden">
+    <section className="bg-[#0b1b26] border-t  border-b border-white/10 relative z-20 overflow-hidden">
       <motion.div 
         className="container mx-auto px-6"
         initial={{ opacity: 0, y: 40 }}

@@ -1,13 +1,15 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Plane, Building2, Utensils, Bus, ArrowRight } from "lucide-react";
+import PackageModal from "./PackageModal";
 
 const packages = [
   {
     id: 1,
-    title: "Haj 2025\nStandard Package",
+    title: "Haj 2026\nStandard Package",
     image: "/images/kaaba.png",
     days: "20 DAYS",
     price: "₹ 4,75,000",
@@ -15,7 +17,7 @@ const packages = [
   },
   {
     id: 2,
-    title: "Haj 2025\nDeluxe Package",
+    title: "Haj 2026\nDeluxe Package",
     image: "/images/makkah.png",
     days: "20 DAYS",
     price: "₹ 5,75,000",
@@ -23,7 +25,7 @@ const packages = [
   },
   {
     id: 3,
-    title: "Haj 2025\nVIP Package",
+    title: "Haj 2026\nVIP Package",
     image: "/images/gallery-1.png",
     days: "35 DAYS",
     price: "₹ 7,25,000",
@@ -40,6 +42,14 @@ const packages = [
 ];
 
 export default function Packages() {
+  const [selectedPkg, setSelectedPkg] = useState<any | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenDetails = (pkg: any) => {
+    setSelectedPkg(pkg);
+    setIsModalOpen(true);
+  };
+
   return (
     <section id="packages" className="py-20 bg-[#fafaf9] relative overflow-hidden">
       {/* Animated Background Elements */}
@@ -95,7 +105,7 @@ export default function Packages() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            href="#"
+            href="/haj-packages"
             className="hidden md:flex items-center gap-2 border border-navy-900/20 text-navy-900 px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-navy-900 hover:text-white transition-colors"
           >
             View All Packages
@@ -155,12 +165,11 @@ export default function Packages() {
                   {pkg.distance}
                 </p>
 
-                <div className="flex items-end justify-between pt-5 border-t border-gray-100">
-                  <div>
-                    <div className="text-lg font-bold text-navy-900 leading-none mb-1">{pkg.price}</div>
-                    <div className="text-[10px] text-gray-500">Per Person</div>
-                  </div>
-                  <button className="bg-islamic-green hover:bg-[#c5e063] text-navy-900 px-5 py-2 rounded text-[11px] font-bold transition-colors shadow-sm">
+                <div className="pt-5 border-t border-gray-100">
+                  <button 
+                    onClick={() => handleOpenDetails(pkg)}
+                    className="w-full bg-islamic-green hover:bg-[#c5e063] text-navy-900 py-2.5 rounded-lg text-[11px] font-bold transition-colors shadow-sm text-center cursor-pointer"
+                  >
                     View Details
                   </button>
                 </div>
@@ -170,12 +179,19 @@ export default function Packages() {
         </div>
         
         <div className="mt-8 flex justify-center md:hidden">
-          <button className="flex items-center gap-2 border border-navy-900/20 text-navy-900 px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-navy-900 hover:text-white transition-colors">
+          <a href="/haj-packages" className="flex items-center gap-2 border border-navy-900/20 text-navy-900 px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-navy-900 hover:text-white transition-colors">
             View All Packages
             <ArrowRight size={16} />
-          </button>
+          </a>
         </div>
       </motion.div>
+
+      {/* Reusable Package details popup Modal */}
+      <PackageModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        pkg={selectedPkg}
+      />
     </section>
   );
 }

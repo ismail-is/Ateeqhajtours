@@ -13,13 +13,14 @@ import {
   Award, BadgeDollarSign, HeadphonesIcon, Users,
   Receipt, Users2, ShieldCheck, FileCheck2, ChevronRight
 } from "lucide-react";
+import PackageModal from "@/components/PackageModal";
 
 const packagesData = [
   {
     id: 1,
     type: "STANDARD",
     days: "20 DAYS",
-    title: "Haj 2025\nStandard Package",
+    title: "Haj 2026\nStandard Package",
     image: "/images/kaaba.png",
     distance: "Makkah: 800m | Madinah: 700m",
     price: "₹ 4,75,000",
@@ -29,7 +30,7 @@ const packagesData = [
     id: 2,
     type: "DELUXE",
     days: "25 DAYS",
-    title: "Haj 2025\nDeluxe Package",
+    title: "Haj 2026\nDeluxe Package",
     image: "/images/madinah.png",
     distance: "Makkah: 500m | Madinah: 250m",
     price: "₹ 5,75,000",
@@ -39,7 +40,7 @@ const packagesData = [
     id: 3,
     type: "PREMIUM",
     days: "33 DAYS",
-    title: "Haj 2025\nPremium Package",
+    title: "Haj 2026\nPremium Package",
     image: "/images/gallery-1.png",
     distance: "Makkah: 300m | Madinah: 150m",
     price: "₹ 7,25,000",
@@ -49,7 +50,7 @@ const packagesData = [
     id: 4,
     type: "VIP",
     days: "45 DAYS",
-    title: "Haj 2025\nVIP Package",
+    title: "Haj 2026\nVIP Package",
     image: "/images/makkah.png",
     distance: "Makkah: 150m | Madinah: 100m",
     price: "₹ 9,25,000",
@@ -59,6 +60,13 @@ const packagesData = [
 
 export default function HajPackagesPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [selectedPkg, setSelectedPkg] = useState<any | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenDetails = (pkg: any) => {
+    setSelectedPkg(pkg);
+    setIsModalOpen(true);
+  };
 
   return (
     <main className="bg-[#fafaf9] min-h-screen font-poppins">
@@ -136,8 +144,6 @@ export default function HajPackagesPage() {
                   <div className="relative">
                     <select className="appearance-none bg-gray-50 border border-gray-200 text-[12px] font-medium text-navy-900 pl-4 pr-10 py-2.5 rounded-lg focus:outline-none focus:ring-1 focus:ring-islamic-green cursor-pointer min-w-[160px]">
                       <option>Sort by: Popularity</option>
-                      <option>Price: Low to High</option>
-                      <option>Price: High to Low</option>
                       <option>Duration: Short to Long</option>
                     </select>
                     <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
@@ -204,12 +210,11 @@ export default function HajPackagesPage() {
                       </div>
 
                       {/* Price & CTA */}
-                      <div className="flex items-center justify-between pb-6 border-b border-gray-100">
-                        <div>
-                          <div className="text-xl font-bold text-navy-900 leading-none mb-1">{pkg.price}</div>
-                          <div className="text-[10px] text-gray-500 font-medium">Per Person</div>
-                        </div>
-                        <button className="border-2 border-islamic-green text-islamic-green hover:bg-islamic-green hover:text-navy-900 px-5 py-2 rounded-lg text-[11px] font-bold transition-colors">
+                      <div className="pb-6 border-b border-gray-100">
+                        <button 
+                          onClick={() => handleOpenDetails(pkg)}
+                          className="w-full border-2 border-islamic-green text-islamic-green hover:bg-islamic-green hover:text-navy-900 py-2.5 rounded-xl text-[11px] font-bold transition-colors text-center cursor-pointer"
+                        >
                           View Details
                         </button>
                       </div>
@@ -260,6 +265,13 @@ export default function HajPackagesPage() {
 
       <CTA />
       <Footer />
+
+      {/* Package Details Pop-up Modal */}
+      <PackageModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        pkg={selectedPkg}
+      />
     </main>
   );
 }

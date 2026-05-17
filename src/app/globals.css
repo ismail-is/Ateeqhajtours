@@ -6,12 +6,19 @@
   --color-gold-500: #eeb012;
   --color-cream-50: #fafaf9;
 
-  --font-playfair: var(--font-playfair);
-  --font-poppins: var(--font-poppins);
+  --font-playfair: var(--font-cormorant);
+  --font-poppins: var(--font-jakarta);
+  --font-cinzel: var(--font-cinzel);
 }
 
 @layer base {
   body {
     @apply bg-cream-50 text-navy-900 font-poppins;
   }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

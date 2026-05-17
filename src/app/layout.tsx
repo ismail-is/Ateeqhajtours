@@ -1,17 +1,23 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Poppins } from "next/font/google";
+import { Cinzel, Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
 
-const playfair = Playfair_Display({
+const cinzel = Cinzel({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-cinzel",
 });
 
-const poppins = Poppins({
+const cormorant = Cormorant_Garamond({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
-  variable: "--font-poppins",
+  variable: "--font-cormorant",
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  weight: ["300", "400", "500", "600", "700", "800"],
+  subsets: ["latin"],
+  variable: "--font-jakarta",
 });
 
 export const metadata: Metadata = {
@@ -25,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${poppins.variable} scroll-smooth`}>
+    <html lang="en" className={`${cinzel.variable} ${cormorant.variable} ${jakarta.variable} scroll-smooth`}>
       <body className="font-poppins text-navy-900 bg-cream-50 min-h-screen antialiased selection:bg-gold-500 selection:text-white overflow-x-hidden">
         <LenisProvider>
           {children}

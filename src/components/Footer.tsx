@@ -20,13 +20,15 @@ export default function Footer() {
           <div className="flex flex-col">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-8 h-8 relative shrink-0">
-                <div className="absolute inset-0 border-2 border-gold-500 rounded-md rotate-45" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-3 h-4 bg-gold-500 rounded-sm" />
-                </div>
+                <Image
+                  src="/images/Ateeq/ateeq-logo.png"
+                  alt="Ateeq Haj Tours Logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
               <div className="flex flex-col">
-                <span className="font-playfair font-bold text-lg leading-none text-gold-500 tracking-wide uppercase">
+                <span className="font-cinzel font-bold text-lg leading-none text-gold-500 tracking-wide uppercase">
                   Ateeq Haj Tours
                 </span>
                 <span className="text-[9px] text-white/90 tracking-widest mt-0.5">

@@ -35,24 +35,17 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         
-        {/* Logo */}
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 relative">
-            {/* A placeholder for the logo icon, we can use a custom SVG or just a stylized element */}
-            <div className="absolute inset-0 border-2 border-gold-500 rounded-lg rotate-45" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-4 h-5 bg-gold-500 rounded-sm" />
-            </div>
+        <a href="/" className="flex items-center -my-2">
+          <div className="h-16 lg:h-20 w-48 sm:w-56 lg:w-64 relative transition-all duration-300">
+            <Image
+              src="/images/Ateeq/ateeq-logo.png"
+              alt="Ateeq Haj Tours"
+              fill
+              className="object-contain object-left scale-110 sm:scale-125 origin-left"
+              priority
+            />
           </div>
-          <div className="flex flex-col">
-            <span className="font-playfair font-bold text-[1.3rem] leading-none text-gold-500 tracking-wide uppercase">
-              Ateeq Haj Tours
-            </span>
-            <span className="text-[0.65rem] text-white/90 tracking-widest mt-1">
-              HAJ & UMRAH SERVICES
-            </span>
-          </div>
-        </div>
+        </a>
 
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center space-x-7">
