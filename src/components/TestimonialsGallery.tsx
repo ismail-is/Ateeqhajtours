@@ -7,6 +7,15 @@ import { Star, ArrowRight } from "lucide-react";
 export default function TestimonialsGallery() {
   return (
     <section className="py-20 bg-cream-50 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <motion.div 
+        animate={{ 
+          scale: [1, 1.1, 1],
+          opacity: [0.05, 0.1, 0.05]
+        }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 left-1/4 w-[800px] h-[800px] bg-navy-900/5 rounded-full blur-[120px] pointer-events-none"
+      />
       <motion.div 
         className="container mx-auto px-6"
         initial={{ opacity: 0, y: 60 }}

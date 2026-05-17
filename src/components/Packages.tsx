@@ -42,6 +42,24 @@ const packages = [
 export default function Packages() {
   return (
     <section id="packages" className="py-20 bg-[#fafaf9] relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <motion.div 
+        animate={{ 
+          y: [0, -20, 0],
+          opacity: [0.1, 0.2, 0.1]
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold-500/5 rounded-full blur-[100px] pointer-events-none"
+      />
+      <motion.div 
+        animate={{ 
+          x: [0, 30, 0],
+          opacity: [0.05, 0.15, 0.05]
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        className="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-islamic-green/10 rounded-full blur-[100px] pointer-events-none"
+      />
+
       <motion.div 
         className="container mx-auto px-6"
         initial={{ opacity: 0, y: 50 }}

@@ -46,7 +46,7 @@ export default function ProcessTimeline() {
           {/* Connecting Dotted Line */}
           <div className="hidden lg:block absolute top-[40px] left-[5%] right-[5%] border-t-2 border-dashed border-gold-500/40 z-0"></div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-4 relative z-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-4 relative z-10">
             {steps.map((step, index) => (
               <motion.div
                 key={index}

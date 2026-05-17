@@ -71,7 +71,7 @@ export default function VirtualTour() {
 
         <div 
           ref={containerRef}
-          className={`relative overflow-hidden shadow-2xl mx-auto transition-all duration-700 bg-navy-900 ${isFullscreen ? 'w-screen h-screen rounded-none border-none' : 'max-w-6xl h-[500px] md:h-[600px] rounded-[2rem] border border-navy-900/10 group'}`}
+          className={`relative overflow-hidden shadow-2xl mx-auto transition-all duration-700 bg-navy-900 ${isFullscreen ? 'w-screen h-screen rounded-none border-none' : 'max-w-6xl h-[400px] md:h-[600px] rounded-[2rem] border border-navy-900/10 group'}`}
         >
           <AnimatePresence mode="wait">
             {!isPlaying ? (
