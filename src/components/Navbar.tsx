@@ -4,7 +4,10 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import Image from "next/image";
 
+import { usePathname } from "next/navigation";
+
 export default function Navbar() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -15,13 +18,13 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#", active: true },
-    { name: "About Us", href: "#about" },
-    { name: "Haj Packages", href: "#packages" },
-    { name: "Umrah Packages", href: "#packages" },
-    { name: "Services", href: "#services" },
-    { name: "Gallery", href: "#gallery" },
-    { name: "Contact Us", href: "#contact" },
+    { name: "Home", href: "/", active: pathname === "/" },
+    { name: "About Us", href: "/about", active: pathname === "/about" },
+    { name: "Haj Packages", href: "/haj-packages", active: pathname === "/haj-packages" },
+    { name: "Umrah Packages", href: "/umrah-packages", active: pathname === "/umrah-packages" },
+    { name: "Services", href: "/#services", active: false },
+    { name: "Gallery", href: "/gallery", active: pathname === "/gallery" },
+    { name: "Contact Us", href: "/contact", active: pathname === "/contact" },
   ];
 
   return (
