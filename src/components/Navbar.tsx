@@ -22,7 +22,7 @@ export default function Navbar() {
     { name: "About Us", href: "/about", active: pathname === "/about" },
     { name: "Haj Packages", href: "/haj-packages", active: pathname === "/haj-packages" },
     { name: "Umrah Packages", href: "/umrah-packages", active: pathname === "/umrah-packages" },
-    { name: "Services", href: "/#services", active: false },
+    // { name: "Services", href: "/#services", active: false },
     { name: "Gallery", href: "/gallery", active: pathname === "/gallery" },
     { name: "Contact Us", href: "/contact", active: pathname === "/contact" },
   ];
@@ -74,8 +74,8 @@ export default function Navbar() {
           </div>
           <div className="flex flex-col">
             <span className="text-[10px] text-white/80 uppercase tracking-wider">Call for Assistance</span>
-            <a href="tel:+917863878630" className="text-islamic-green font-bold text-sm tracking-wide">
-              +91 786 38 786 30
+            <a href="tel:+919845043339" className="text-islamic-green font-bold text-sm tracking-wide">
+              +91 98450 43339
             </a>
           </div>
         </div>
@@ -108,8 +108,8 @@ export default function Navbar() {
             </div>
             <div className="flex flex-col">
               <span className="text-[10px] text-white/80 uppercase">Call for Assistance</span>
-              <a href="tel:+917863878630" className="text-islamic-green font-bold text-sm">
-                +91 786 38 786 30
+              <a href="tel:+919845043339" className="text-islamic-green font-bold text-sm">
+                +91 98450 43339
               </a>
             </div>
           </div>

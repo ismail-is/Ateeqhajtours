@@ -65,50 +65,61 @@ export default function GalleryPage() {
   const [activeFilter, setActiveFilter] = useState("All Photos");
 
   return (
-    <main className="bg-[#fafaf9] min-h-screen font-poppins pt-20">
+    <main className="bg-[#fafaf9] min-h-screen font-poppins">
       <Navbar />
 
-      {/* 1. Hero Section (Curved Split) */}
-      <section className="relative h-[350px] md:h-[400px] w-full overflow-hidden bg-navy-900 flex">
-        
-        {/* Left Side (Dark Content) */}
-        <div className="w-full md:w-[60%] lg:w-[45%] relative z-20 flex flex-col justify-center px-6 md:px-16 lg:px-24 bg-navy-900/85 md:bg-navy-900 h-full">
-          {/* Pattern overlay */}
-          <div className="absolute inset-0 opacity-20 mix-blend-overlay">
-            <Image src="/images/pattern.png" alt="Pattern" fill className="object-cover" />
+      {/* 1. Hero Section */}
+      <section className="relative pt-24 pb-12 bg-navy-900 overflow-hidden">
+        {/* Background Split */}
+        <div className="absolute inset-0 z-0 flex">
+          {/* Left Dark Green with Pattern */}
+          <div className="w-full lg:w-1/2 relative bg-[#0b1b26]">
+            <Image src="/images/pattern.png" alt="Pattern" fill className="object-cover opacity-10 mix-blend-overlay" />
           </div>
-          
-          <div className="relative z-10">
-            {/* Breadcrumb */}
-            <div className="flex items-center gap-2 text-[11px] text-white/60 mb-4 md:mb-6 font-medium">
-              <Link href="/" className="hover:text-gold-500 transition-colors">Home</Link>
-              <ChevronRight size={12} />
-              <span className="text-white">Gallery</span>
-            </div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-[4rem] font-playfair font-bold text-white mb-4">
-              Our <span className="text-islamic-green">Gallery</span>
-            </h1>
-            <p className="text-white/80 text-xs md:text-sm max-w-md leading-relaxed">
-              Explore the blessed moments and spiritual experiences from the holy journey of our pilgrims.
-            </p>
+          {/* Right Image */}
+          <div className="hidden lg:block w-1/2 relative">
+            <Image src="/images/gallery-1.png" alt="Gallery Banner" fill className="object-cover opacity-80" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0b1b26] to-transparent" />
           </div>
         </div>
 
-        {/* Right Side (Image with SVG curve overlay) */}
-        <div className="absolute right-0 top-0 bottom-0 w-full md:w-[60%] lg:w-[70%] z-0 h-full">
-          <Image src="/images/gallery-1.png" alt="Pilgrims at Kaaba" fill className="object-cover" priority />
-          <div className="absolute inset-0 bg-navy-900/20" />
-          
-          {/* SVG Golden Arc separator */}
-          <svg 
-            className="absolute left-[-1px] top-0 h-full w-[150px] lg:w-[250px] text-navy-900 drop-shadow-[5px_0_0_rgba(238,176,18,0.5)] hidden md:block" 
-            viewBox="0 0 100 100" 
-            preserveAspectRatio="none" 
-            fill="currentColor"
-          >
-            <path d="M0,0 C100,20 100,80 0,100 Z" />
-          </svg>
+        <div className="container mx-auto px-6 relative z-10 pt-8 lg:pt-12">
+          {/* Breadcrumb */}
+          <div className="flex items-center gap-2 text-[11px] text-white/60 mb-6 font-medium">
+            <Link href="/" className="hover:text-gold-500 transition-colors">Home</Link>
+            <ChevronRight size={12} />
+            <span className="text-white">Gallery</span>
+          </div>
+
+          <div className="flex flex-col lg:flex-row justify-between items-end gap-10">
+            {/* Title & Description */}
+            <div className="max-w-xl">
+              <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-playfair font-bold text-white leading-tight mb-4">
+                Our <span className="text-islamic-green">Gallery</span>
+              </h1>
+              <p className="text-white/80 text-sm md:text-[15px] leading-relaxed max-w-md">
+                Explore the blessed moments and spiritual experiences from the holy journey of our pilgrims.
+              </p>
+            </div>
+
+            {/* Inline Features Box */}
+            <div className="hidden md:flex items-center gap-6 bg-[#0b1b26]/80 backdrop-blur-md border border-islamic-green/30 rounded-full px-8 py-4 shadow-xl">
+              {[
+                { icon: Camera, text: "Blessed\nMoments" },
+                { icon: Users2, text: "Happy\nPilgrims" },
+                { icon: Star, text: "Spiritual\nJourneys" },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full border border-gold-500/30 flex items-center justify-center text-gold-500 bg-gold-500/5">
+                    <item.icon size={18} strokeWidth={1.5} />
+                  </div>
+                  <span className="text-[10px] text-white font-semibold uppercase tracking-wider whitespace-pre-line leading-tight">
+                    {item.text}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

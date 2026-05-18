@@ -136,38 +136,8 @@ export default function HajPackagesPage() {
             {/* Right Packages Grid */}
             <div className="flex-1">
               
-              {/* Toolbar */}
-              <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4 bg-white p-3 rounded-2xl border border-gray-200 shadow-sm">
-                <span className="text-[13px] font-medium text-navy-900 ml-2">Showing 4 Packages</span>
-                
-                <div className="flex items-center gap-3">
-                  <div className="relative">
-                    <select className="appearance-none bg-gray-50 border border-gray-200 text-[12px] font-medium text-navy-900 pl-4 pr-10 py-2.5 rounded-lg focus:outline-none focus:ring-1 focus:ring-islamic-green cursor-pointer min-w-[160px]">
-                      <option>Sort by: Popularity</option>
-                      <option>Duration: Short to Long</option>
-                    </select>
-                    <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
-                  </div>
-                  
-                  <div className="flex bg-gray-100 rounded-lg p-1 gap-1">
-                    <button 
-                      onClick={() => setViewMode('grid')}
-                      className={`p-1.5 rounded-md transition-colors ${viewMode === 'grid' ? 'bg-islamic-green text-navy-900 shadow-sm' : 'text-gray-500 hover:text-navy-900'}`}
-                    >
-                      <LayoutGrid size={16} />
-                    </button>
-                    <button 
-                      onClick={() => setViewMode('list')}
-                      className={`p-1.5 rounded-md transition-colors ${viewMode === 'list' ? 'bg-islamic-green text-navy-900 shadow-sm' : 'text-gray-500 hover:text-navy-900'}`}
-                    >
-                      <List size={16} />
-                    </button>
-                  </div>
-                </div>
-              </div>
-
               {/* Grid */}
-              <div className={`grid gap-6 ${viewMode === 'grid' ? 'sm:grid-cols-2 lg:grid-cols-4' : 'grid-cols-1'}`}>
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 {packagesData.map((pkg) => (
                   <div key={pkg.id} className="bg-white rounded-[20px] overflow-hidden border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
                     

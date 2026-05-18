@@ -16,29 +16,33 @@ export default function ContactPage() {
       icon: Phone,
       color: "text-gold-500",
       label: "Call Us",
-      text1: "+91 786 38 786 30\n+91 812 13 132 11",
-      text2: ""
+      text1: "+91 98450 43339",
+      text2: "",
+      href: "tel:+919845043339"
     },
     {
       icon: MessageCircle,
       color: "text-islamic-green",
       label: "WhatsApp",
-      text1: "+91 786 38 786 30",
-      text2: "Chat with us on WhatsApp"
+      text1: "+91 81975 93479",
+      text2: "Chat with us on WhatsApp",
+      href: "https://wa.me/918197593479"
     },
     {
       icon: Mail,
       color: "text-gold-500",
       label: "Email Us",
       text1: "info@ateeqhajtours.com",
-      text2: "We'll respond as soon as possible"
+      text2: "We'll respond as soon as possible",
+      href: "mailto:info@ateeqhajtours.com"
     },
     {
       icon: MapPin,
       color: "text-gold-500",
       label: "Visit Us",
-      text1: "#18-13-132/1/A/98, Tej Enclave,\nFateh Darwaza, Hyderabad,\nTelangana - 500002",
-      text2: ""
+      text1: "No – 15/2, Infantry Road cross\nNext to Blue Cross Chambers\nBangalore -560001\nKarnataka – India.",
+      text2: "",
+      href: "https://maps.google.com/?q=No+15/2,+Infantry+Road+cross,+Bangalore+-+560001"
     }
   ];
 
@@ -66,68 +70,60 @@ export default function ContactPage() {
   ];
 
   return (
-    <main className="bg-[#fafaf9] min-h-screen font-poppins pt-20">
+    <main className="bg-[#fafaf9] min-h-screen font-poppins">
       <Navbar />
 
-      {/* 1. Hero Section (Curved Split) */}
-      <section className="relative h-[400px] md:h-[450px] w-full overflow-hidden bg-navy-900 flex">
-        
-        {/* Left Side (Dark Content) */}
-        <div className="w-full md:w-[60%] lg:w-[45%] relative z-20 flex flex-col justify-center px-6 md:px-16 lg:px-24 bg-navy-900/85 md:bg-navy-900 h-full">
-          {/* Pattern overlay */}
-          <div className="absolute inset-0 opacity-20 mix-blend-overlay">
-            <Image src="/images/pattern.png" alt="Pattern" fill className="object-cover" />
+      {/* 1. Hero Section */}
+      <section className="relative pt-24 pb-12 bg-navy-900 overflow-hidden">
+        {/* Background Split */}
+        <div className="absolute inset-0 z-0 flex">
+          {/* Left Dark Green with Pattern */}
+          <div className="w-full lg:w-1/2 relative bg-[#0b1b26]">
+            <Image src="/images/pattern.png" alt="Pattern" fill className="object-cover opacity-10 mix-blend-overlay" />
           </div>
-          
-          <div className="relative z-10 pt-4 md:pt-0">
-            {/* Breadcrumb */}
-            <div className="flex items-center gap-2 text-[11px] text-white/60 mb-4 md:mb-6 font-medium">
-              <Link href="/" className="hover:text-gold-500 transition-colors">Home</Link>
-              <ChevronRight size={12} />
-              <span className="text-white">Contact Us</span>
-            </div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-playfair font-bold text-white mb-4 leading-tight">
-              We're Here to <br className="md:hidden" /><span className="text-islamic-green">Help You</span>
-            </h1>
-            <p className="text-white/80 text-xs md:text-[14px] max-w-md leading-relaxed mb-6">
-              Have questions or need assistance with your Hajj or Umrah journey? 
-              Our team is ready to help you 24/7 with care and guidance.
-            </p>
-            
-            {/* Decorative Gold Stars */}
-            <div className="flex items-center gap-2 text-gold-500/60">
-               <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-gold-500/60" />
-               <div className="rotate-45 w-2 h-2 bg-gold-500/60" />
-               <div className="rotate-45 w-3 h-3 bg-gold-500/80" />
-               <div className="rotate-45 w-2 h-2 bg-gold-500/60" />
-               <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-gold-500/60" />
-            </div>
+          {/* Right Image */}
+          <div className="hidden lg:block w-1/2 relative">
+            <Image src="/images/madinah.png" alt="Contact Us" fill className="object-cover opacity-80" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0b1b26] to-transparent" />
           </div>
         </div>
 
-        {/* Right Side (Image with SVG curve overlay) */}
-        <div className="absolute right-0 top-0 bottom-0 w-full md:w-[60%] lg:w-[70%] z-0 h-full">
-          <Image src="/images/madinah.png" alt="Contact Us" fill className="object-cover" priority />
-          <div className="absolute inset-0 bg-navy-900/30" />
-          
-          {/* SVG Golden Arc separator */}
-          <svg 
-            className="absolute left-[-1px] top-0 h-full w-[150px] lg:w-[250px] text-navy-900 drop-shadow-[5px_0_0_rgba(238,176,18,0.5)] hidden md:block" 
-            viewBox="0 0 100 100" 
-            preserveAspectRatio="none" 
-            fill="currentColor"
-          >
-            <path d="M0,0 C100,20 100,80 0,100 Z" />
-          </svg>
+        <div className="container mx-auto px-6 relative z-10 pt-8 lg:pt-12">
+          {/* Breadcrumb */}
+          <div className="flex items-center gap-2 text-[11px] text-white/60 mb-6 font-medium">
+            <Link href="/" className="hover:text-gold-500 transition-colors">Home</Link>
+            <ChevronRight size={12} />
+            <span className="text-white">Contact Us</span>
+          </div>
 
-          {/* Floating Card (24/7 Support) */}
-          <div className="absolute right-12 lg:right-24 top-1/2 -translate-y-1/2 bg-[#0b1b26]/90 backdrop-blur-md p-10 rounded-[24px] shadow-2xl border border-white/10 text-center max-w-[300px] z-30 hidden md:block">
-            <HeadphonesIcon size={48} className="text-islamic-green mx-auto mb-6" strokeWidth={1.5} />
-            <h3 className="text-[22px] font-playfair font-bold text-white mb-3">24/7 Support</h3>
-            <p className="text-white/70 text-[13px] leading-relaxed px-2">
-              We are always here to assist you on your spiritual journey
-            </p>
+          <div className="flex flex-col lg:flex-row justify-between items-end gap-10">
+            {/* Title & Description */}
+            <div className="max-w-xl">
+              <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-playfair font-bold text-white leading-tight mb-4">
+                Contact <span className="text-islamic-green">Us</span>
+              </h1>
+              <p className="text-white/80 text-sm md:text-[15px] leading-relaxed max-w-md">
+                Have questions or need assistance with your Hajj or Umrah journey? Our team is ready to help you 24/7 with care and guidance.
+              </p>
+            </div>
+
+            {/* Inline Features Box */}
+            <div className="hidden md:flex items-center gap-6 bg-[#0b1b26]/80 backdrop-blur-md border border-islamic-green/30 rounded-full px-8 py-4 shadow-xl">
+              {[
+                { icon: Phone, text: "Call Us\nAnytime" },
+                { icon: HeadphonesIcon, text: "24/7 Live\nSupport" },
+                { icon: ShieldCheck, text: "Trusted\nGuidance" },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full border border-gold-500/30 flex items-center justify-center text-gold-500 bg-gold-500/5">
+                    <item.icon size={18} strokeWidth={1.5} />
+                  </div>
+                  <span className="text-[10px] text-white font-semibold uppercase tracking-wider whitespace-pre-line leading-tight">
+                    {item.text}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -144,20 +140,26 @@ export default function ContactPage() {
               </h3>
               <div className="space-y-4">
                 {contactMethods.map((contact, i) => (
-                  <div key={i} className="flex gap-5 bg-white p-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                    <div className="w-16 h-16 bg-[#0b1b26] rounded-xl flex flex-col justify-center items-center shrink-0 text-white gap-1.5">
+                  <a 
+                    key={i} 
+                    href={contact.href}
+                    target={contact.href.startsWith("http") ? "_blank" : undefined}
+                    rel={contact.href.startsWith("http") ? "noreferrer" : undefined}
+                    className="flex gap-5 bg-white p-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 hover:-translate-y-1 block cursor-pointer group"
+                  >
+                    <div className="w-16 h-16 bg-[#0b1b26] rounded-xl flex flex-col justify-center items-center shrink-0 text-white gap-1.5 group-hover:bg-[#112a3b] transition-colors">
                       <contact.icon size={22} className={contact.color} strokeWidth={1.5} />
                       <span className="text-[9px] font-bold tracking-wide uppercase">{contact.label}</span>
                     </div>
                     <div className="flex flex-col justify-center pt-1">
-                      <p className="text-navy-900 font-bold text-[13px] whitespace-pre-line leading-relaxed">
+                      <p className="text-navy-900 font-bold text-[13px] whitespace-pre-line leading-relaxed group-hover:text-gold-500 transition-colors">
                         {contact.text1}
                       </p>
                       {contact.text2 && (
                         <p className="text-gray-500 text-[12px] mt-1 font-medium">{contact.text2}</p>
                       )}
                     </div>
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>
@@ -235,7 +237,7 @@ export default function ContactPage() {
                 {/* Map Area */}
                 <div className="flex-1 w-full bg-gray-100 relative min-h-[250px]">
                   <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m3!1d3807.828699478144!2d78.4716949!3d17.371911!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb97800c25a075%3A0xcb1b59c7f6d2f5a2!2sFateh%20Darwaza%2C%20Hyderabad%2C%20Telangana%20500002!5e0!3m2!1sen!2sin!4v1715874288123!5m2!1sen!2sin" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.8860714777977!2d77.5969542!3d12.9791443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae16790adbf233%3A0xe4c61df9f20d75b8!2sInfantry%20Rd%2C%20Tasker%20Town%2C%20Shivajinagar%2C%20Bengaluru%2C%20Karnataka%20560001!5e0!3m2!1sen!2sin!4v1715874288123!5m2!1sen!2sin" 
                     width="100%" 
                     height="100%" 
                     style={{ border: 0 }} 

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTA from "@/components/CTA";
@@ -9,7 +10,8 @@ import {
   Award, Users, ShieldCheck, HeadphonesIcon, 
   Play, Target, Eye, BookOpen, Star, 
   CheckCircle, Navigation, HeartHandshake, 
-  BadgeDollarSign, ThumbsUp, Globe, BadgePercent
+  BadgeDollarSign, ThumbsUp, Globe, BadgePercent,
+  ChevronRight
 } from "lucide-react";
 
 export default function AboutPage() {
@@ -17,115 +19,62 @@ export default function AboutPage() {
     <main className="relative bg-cream-50 overflow-hidden font-poppins min-h-screen">
       <Navbar />
 
-      {/* 1. Cinematic Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-32 overflow-hidden bg-navy-900 min-h-[75vh] flex flex-col justify-center">
-        
-        {/* Background Image with Slow Ken-Burns Zoom & True Contrast Gradients */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <motion.div
-            initial={{ scale: 1.15, opacity: 0.2 }}
-            animate={{ scale: 1.02, opacity: 0.35 }}
-            transition={{ duration: 15, ease: "easeOut" }}
-            className="w-full h-full relative"
-          >
-            <Image
-              src="/images/kaaba.png"
-              alt="Kaaba in Makkah"
-              fill
-              className="object-cover object-top"
-              priority
-            />
-          </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-r from-navy-900 via-navy-900/80 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent to-transparent opacity-95" />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy-900/60 via-transparent to-navy-900" />
+      {/* 1. Hero Section */}
+      <section className="relative pt-24 pb-12 bg-navy-900 overflow-hidden">
+        {/* Background Split */}
+        <div className="absolute inset-0 z-0 flex">
+          {/* Left Dark Green with Pattern */}
+          <div className="w-full lg:w-1/2 relative bg-[#0b1b26]">
+            <Image src="/images/pattern.png" alt="Pattern" fill className="object-cover opacity-10 mix-blend-overlay" />
+          </div>
+          {/* Right Image */}
+          <div className="hidden lg:block w-1/2 relative">
+            <Image src="/images/kaaba.png" alt="Kaaba" fill className="object-cover opacity-80" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0b1b26] to-transparent" />
+          </div>
         </div>
 
-        {/* Floating Ambient Glow Orb */}
-        <motion.div 
-          animate={{ 
-            opacity: [0.12, 0.22, 0.12],
-            scale: [1, 1.12, 1],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[10%] left-[-5%] w-[40%] h-[40%] rounded-full bg-gold-500/15 blur-[120px] pointer-events-none z-1"
-        />
+        <div className="container mx-auto px-6 relative z-10 pt-8 lg:pt-12">
+          {/* Breadcrumb */}
+          <div className="flex items-center gap-2 text-[11px] text-white/60 mb-6 font-medium">
+            <Link href="/" className="hover:text-gold-500 transition-colors">Home</Link>
+            <ChevronRight size={12} />
+            <span className="text-white">About Us</span>
+          </div>
 
-        {/* Sliding Islamic Geometric Background Pattern Overlay */}
-        <motion.div
-          animate={{ backgroundPosition: ["0px 0px", "80px 80px"] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          style={{
-            backgroundImage: "url('/images/pattern.png')",
-            backgroundSize: "260px 260px",
-          }}
-          className="absolute inset-0 z-1 pointer-events-none opacity-[0.06] mix-blend-overlay"
-        />
+          <div className="flex flex-col lg:flex-row justify-between items-end gap-10 mb-12">
+            {/* Title & Description */}
+            <div className="max-w-xl">
+              <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-playfair font-bold text-white leading-tight mb-4">
+                About <span className="text-islamic-green">Us</span>
+              </h1>
+              <p className="text-white/80 text-sm md:text-[15px] leading-relaxed max-w-md">
+                Ateeq Haj Tours is a trusted name in luxury Haj & Umrah travel. We are committed to providing a spiritual journey that is comfortable, safe and spiritually memorable.
+              </p>
+            </div>
 
-        <div className="container mx-auto px-6 relative z-10 flex flex-col justify-center">
-          <div className="max-w-3xl mb-12 lg:mb-16">
-            
-            {/* Elegant Tagline Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <span className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-gold-500/30 text-gold-500 text-[10px] font-bold tracking-[0.25em] uppercase mb-6 bg-gold-500/10 backdrop-blur-sm shadow-[0_0_20px_rgba(238,176,18,0.05)]">
-                <span className="text-gold-500 text-[9px] animate-pulse">✦</span> ABOUT ATEEQ TOURS <span className="text-gold-500 text-[9px] animate-pulse">✦</span>
-              </span>
-            </motion.div>
-
-            {/* Main Header Title */}
-            <motion.h1
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.6rem] font-playfair font-bold text-white leading-[1.1] mb-6"
-            >
-              Serving Pilgrims <br />
-              Since <span className="text-transparent bg-clip-text bg-gradient-to-r from-islamic-green via-gold-500 to-islamic-green bg-[length:200%_auto] inline-block animate-[gradientShift_8s_linear_infinite]">20+ Years</span>
-            </motion.h1>
-
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-white/80 text-sm sm:text-base md:text-lg max-w-xl leading-relaxed font-light"
-            >
-              Ateeq Haj Tours is a trusted name in luxury Haj & Umrah travel. We are committed to providing a spiritual journey that is comfortable, safe and spiritually memorable.
-            </motion.p>
+            {/* Inline Features Box */}
+            <div className="hidden md:flex items-center gap-6 bg-[#0b1b26]/80 backdrop-blur-md border border-islamic-green/30 rounded-full px-8 py-4 shadow-xl">
+              {[
+                { icon: Award, text: "Ministry Approved\nCompany" },
+                { icon: BadgeDollarSign, text: "Best Price\nGuarantee" },
+                { icon: HeadphonesIcon, text: "24/7 Support\nAvailable" },
+                { icon: Users, text: "Experienced\nHaj & Umrah Guides" },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full border border-gold-500/30 flex items-center justify-center text-gold-500 bg-gold-500/5">
+                    <item.icon size={18} strokeWidth={1.5} />
+                  </div>
+                  <span className="text-[10px] text-white font-semibold uppercase tracking-wider whitespace-pre-line leading-tight">
+                    {item.text}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Staggered Floating Stats Bar */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-10 border-t border-white/10"
-          >
-            {[
-              { icon: Award, value: "20+", label: "Years of Experience" },
-              { icon: Users, value: "10K+", label: "Happy Pilgrims" },
-              { icon: ShieldCheck, value: "100%", label: "Satisfaction Rate" },
-              { icon: HeadphonesIcon, value: "24/7", label: "Dedicated Support" },
-            ].map((stat, i) => (
-              <motion.div 
-                key={i} 
-                whileHover={{ y: -5 }}
-                className="flex items-center gap-4 group transition-all duration-300"
-              >
-                <div className="w-12 h-12 rounded-2xl border border-gold-500/20 flex items-center justify-center bg-gold-500/10 text-gold-500 shrink-0 group-hover:bg-gold-500/25 group-hover:border-gold-500/40 transition-all duration-300">
-                  <stat.icon size={22} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
-                </div>
-                <div>
-                  <div className="text-2xl sm:text-3xl font-bold text-white mb-0.5 tracking-tight">{stat.value}</div>
-                  <div className="text-[10px] text-white/50 uppercase tracking-widest font-medium leading-none">{stat.label}</div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+         
         </div>
       </section>
 

@@ -29,7 +29,7 @@ export default function PackageModal({ isOpen, onClose, pkg }: PackageModalProps
 
   // Clean package title for WhatsApp message pre-fill
   const cleanTitle = pkg.title.replace(/\n/g, " ");
-  const whatsappUrl = `https://wa.me/917863878630?text=Assalamu%20Alaikum,%20I%20am%20interested%20in%20booking%20the%20*${encodeURIComponent(cleanTitle)}*%20(${pkg.days})%20package.%20Please%20provide%20more%20details.`;
+  const whatsappUrl = `https://wa.me/918197593479?text=Assalamu%20Alaikum,%20I%20am%20interested%20in%20booking%20the%20*${encodeURIComponent(cleanTitle)}*%20(${pkg.days})%20package.%20Please%20provide%20more%20details.`;
 
   // Fallback features list if not defined in package
   const defaultFeatures = [

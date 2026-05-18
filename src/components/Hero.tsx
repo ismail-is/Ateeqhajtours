@@ -176,7 +176,7 @@ export default function Hero() {
             <motion.a
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              href="https://wa.me/917863878630"
+              href="https://wa.me/918197593479"
               target="_blank"
               rel="noreferrer"
               className="flex items-center justify-center gap-2 bg-navy-900/50 border border-gold-500/40 text-gold-500 px-8 py-4 rounded-xl font-bold transition-all hover:bg-gold-500 hover:text-navy-900 text-sm backdrop-blur-md group w-full sm:w-auto cursor-pointer"
