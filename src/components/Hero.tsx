@@ -37,42 +37,60 @@ const slides = [
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Set mounted on client load
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Auto-advance slides every 6 seconds
   useEffect(() => {
+    if (!isMounted) return;
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 6000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isMounted]);
 
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-28 pb-20 lg:py-0 overflow-hidden bg-navy-900">
       
       {/* 1. Animated Background Image Slider (True Crossfade) */}
-      <div className="absolute inset-0 z-0   overflow-hidden bg-navy-900">
-        <AnimatePresence initial={false}>
-          <motion.div
-            key={currentSlide}
-            initial={{ opacity: 0, scale: 1.08 }}
-            animate={{ opacity: 0.55, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="absolute inset-0 w-full h-full"
-          >
-            <Image
-              src={slides[currentSlide].image}
-              alt="Sacred Sanctuary"
-              fill
-              className="object-cover"
-              priority
-            />
-          </motion.div>
-        </AnimatePresence>
+      <div className="absolute inset-0 z-0 overflow-hidden bg-navy-900">
+        {!isMounted ? (
+          // Static, instant above-the-fold image for 100% LCP performance during SSR and hydration
+          <Image
+            src={slides[0].image}
+            alt="Sacred Sanctuary"
+            fill
+            priority
+            className="object-cover opacity-55"
+          />
+        ) : (
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 0.55, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 1.2, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full"
+            >
+              <Image
+                src={slides[currentSlide].image}
+                alt="Sacred Sanctuary"
+                fill
+                priority={currentSlide === 0}
+                className="object-cover"
+              />
+            </motion.div>
+          </AnimatePresence>
+        )}
         
         {/* Dynamic Dark Gradients for Content Contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-900 via-navy-900/75 to-transparent z-1" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent to-transparent opacity-90 z-1" />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-900 via-navy-900/75 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent to-transparent opacity-90 z-10" />
       </div>
 
       {/* 2. Repeating Islamic Geometric Pattern with Infinite Floating Motion */}

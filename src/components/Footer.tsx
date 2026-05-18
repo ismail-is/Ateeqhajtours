@@ -16,26 +16,17 @@ export default function Footer() {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.5fr_1.5fr_1.5fr] gap-8 mb-12">
-          
           {/* Column 1: Brand */}
           <div className="flex flex-col">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 relative shrink-0">
-                <Image
-                  src="/images/Ateeq/ateeq-logo.png"
-                  alt="Ateeq Haj Tours Logo"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-cinzel font-bold text-lg leading-none text-gold-500 tracking-wide uppercase">
-                  Ateeq Haj Tours
-                </span>
-                <span className="text-[9px] text-white/90 tracking-widest mt-0.5">
-                  HAJ & UMRAH SERVICES
-                </span>
-              </div>
+            {/* Brand Logo */}
+            <div className="relative w-48 h-14 mb-5 shrink-0">
+              <Image
+                src="/images/Ateeq/ateeq-logo.png"
+                alt="Ateeq Haj Tours"
+                fill
+                className="object-contain object-left"
+                priority
+              />
             </div>
             <p className="text-[11px] text-white/60 leading-relaxed mb-6 pr-4">
               We are committed to providing the absolute best service for your Haj & Umrah journey with premium comfort and care.
