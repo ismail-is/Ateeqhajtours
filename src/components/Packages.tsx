@@ -5,6 +5,9 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Plane, Building2, Utensils, Bus, ArrowRight } from "lucide-react";
 import PackageModal from "./PackageModal";
+import Link from "next/link";
+
+const MotionLink = motion(Link);
 
 const packages = [
   {
@@ -101,7 +104,7 @@ export default function Packages() {
               Haj & Umrah Packages
             </motion.h2>
           </div>
-          <motion.a
+          <MotionLink
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -110,7 +113,7 @@ export default function Packages() {
           >
             View All Packages
             <ArrowRight size={16} />
-          </motion.a>
+          </MotionLink>
         </div>
 
         {/* Cards Grid */}
@@ -179,10 +182,10 @@ export default function Packages() {
         </div>
         
         <div className="mt-8 flex justify-center md:hidden">
-          <a href="/haj-packages" className="flex items-center gap-2 border border-navy-900/20 text-navy-900 px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-navy-900 hover:text-white transition-colors">
+          <Link href="/haj-packages" className="flex items-center gap-2 border border-navy-900/20 text-navy-900 px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-navy-900 hover:text-white transition-colors">
             View All Packages
             <ArrowRight size={16} />
-          </a>
+          </Link>
         </div>
       </motion.div>
 

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import Image from "next/image";
-
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
@@ -35,7 +35,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         
-        <a href="/" className="flex items-center -my-2">
+        <Link href="/" className="flex items-center -my-2">
           <div className="h-16 lg:h-20 w-48 sm:w-56 lg:w-64 relative transition-all duration-300">
             <Image
               src="/images/Ateeq/ateeq-logo.png"
@@ -45,12 +45,12 @@ export default function Navbar() {
               priority
             />
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center space-x-7">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               className={`text-[13px] font-medium transition-colors relative group ${
@@ -63,7 +63,7 @@ export default function Navbar() {
                   link.active ? "w-full bg-islamic-green" : "w-0 bg-islamic-green group-hover:w-full"
                 }`}
               ></span>
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -93,14 +93,14 @@ export default function Navbar() {
       {isMobileMenuOpen && (
         <div className="lg:hidden absolute top-full left-0 right-0 bg-navy-900 border-t border-white/10 p-6 flex flex-col space-y-4 shadow-xl">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
               className={`text-sm font-medium ${link.active ? "text-islamic-green" : "text-white"}`}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
           <div className="pt-4 border-t border-white/10 flex items-center gap-3 mt-2">
             <div className="w-10 h-10 rounded-full bg-islamic-green flex items-center justify-center text-navy-900">
