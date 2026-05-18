@@ -67,7 +67,7 @@ export default function TestimonialsGallery() {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         {/* Asymmetric Split Grid */}
-        <div className="grid lg:grid-cols-[1.1fr_2fr] gap-8 lg:gap-12 items-start">
+        <div className="grid lg:grid-cols-[1.1fr_2fr] gap-8 lg:gap-12 items-stretch">
           
           {/* Left Column: Testimonial Auto Slider */}
           <div className="flex flex-col w-full">
@@ -146,62 +146,101 @@ export default function TestimonialsGallery() {
             </motion.div>
           </div>
 
-          {/* Right Column: Moments Grid */}
-          <div className="flex flex-col w-full">
-            <h3 className="text-xl md:text-2xl font-playfair font-bold text-navy-900 mb-6 tracking-tight">
-              Moments That Last Forever
-            </h3>
-            
-            {/* Gallery Grid (Locked Portrait Aspect Ratios) */}
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 h-auto">
-              {[
-                "/images/kaaba.png",
-                "/images/madinah.png",
-                "/images/gallery-1.png",
-                "/images/gallery-3.png"
-              ].map((src, i) => (
-                <motion.div
-                  key={i}
+          {/* Right Column: Moments Grid & CTA Banner */}
+          <div className="flex flex-col w-full justify-between self-stretch gap-6">
+            <div className="flex flex-col w-full">
+              <h3 className="text-xl md:text-2xl font-playfair font-bold text-navy-900 mb-6 tracking-tight">
+                Moments That Last Forever
+              </h3>
+              
+              {/* Gallery Grid (Locked Portrait Aspect Ratios) */}
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-4 h-auto">
+                {[
+                  "/images/kaaba.png",
+                  "/images/madinah.png",
+                  "/images/gallery-1.png",
+                  "/images/gallery-3.png"
+                ].map((src, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08 }}
+                    className="relative rounded-2xl overflow-hidden group cursor-pointer aspect-[3/4] shadow-lg border border-navy-900/5 bg-white"
+                  >
+                    <Image 
+                      src={src} 
+                      alt="Pilgrimage gallery image" 
+                      fill 
+                      sizes="(max-width: 768px) 50vw, 20vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700" 
+                    />
+                    <div className="absolute inset-0 bg-navy-900/15 group-hover:bg-transparent transition-colors duration-300" />
+                  </motion.div>
+                ))}
+                
+                {/* Responsive Link Card */}
+                <MotionLink
+                  href="/gallery"
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
-                  className="relative rounded-2xl overflow-hidden group cursor-pointer aspect-[3/4] shadow-lg border border-navy-900/5 bg-white"
+                  transition={{ delay: 0.35 }}
+                  className="col-span-2 md:col-span-1 aspect-[2.2/1] md:aspect-[3/4] bg-gradient-to-br from-[#0b1b26] to-[#040e14] border border-gold-500/15 rounded-2xl flex flex-row md:flex-col items-center justify-center gap-5 md:gap-3 cursor-pointer hover:bg-navy-900 transition-all duration-300 group shadow-lg px-6 md:px-2 text-center"
                 >
-                  <Image 
-                    src={src} 
-                    alt="Pilgrimage gallery image" 
-                    fill 
-                    sizes="(max-width: 768px) 50vw, 20vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-700" 
-                  />
-                  <div className="absolute inset-0 bg-navy-900/15 group-hover:bg-transparent transition-colors duration-300" />
-                </motion.div>
-              ))}
-              
-              {/* Responsive Link Card */}
-              <MotionLink
-                href="/gallery"
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.35 }}
-                className="col-span-2 md:col-span-1 aspect-[2.2/1] md:aspect-[3/4] bg-gradient-to-br from-[#0b1b26] to-[#040e14] border border-gold-500/15 rounded-2xl flex flex-row md:flex-col items-center justify-center gap-5 md:gap-3 cursor-pointer hover:bg-navy-900 transition-all duration-300 group shadow-lg px-6 md:px-2 text-center"
-              >
-                {/* Rotating Pattern Icon */}
-                <div className="w-10 h-10 border border-gold-500/30 rounded-lg flex items-center justify-center text-gold-500 group-hover:scale-110 transition-transform duration-300 bg-white/5 shrink-0">
-                  <Image src="/images/pattern.png" alt="emblem" width={20} height={20} className="opacity-60 animate-[spin_40s_linear_infinite]" />
-                </div>
-                
-                {/* Card Text & Arrow */}
-                <div className="flex flex-col md:items-center text-left md:text-center pt-0.5">
-                  <div className="text-gold-500 font-extrabold text-[11px] uppercase tracking-wider leading-tight">
-                    View All<br className="hidden md:inline" /> Photos
+                  {/* Rotating Pattern Icon */}
+                  <div className="w-10 h-10 border border-gold-500/30 rounded-lg flex items-center justify-center text-gold-500 group-hover:scale-110 transition-transform duration-300 bg-white/5 shrink-0">
+                    <Image src="/images/pattern.png" alt="emblem" width={20} height={20} className="opacity-60 animate-[spin_40s_linear_infinite]" />
                   </div>
-                  <ArrowRight size={14} className="text-gold-500 mt-1 md:mt-2 group-hover:translate-x-1 transition-transform duration-300" />
-                </div>
-              </MotionLink>
+                  
+                  {/* Card Text & Arrow */}
+                  <div className="flex flex-col md:items-center text-left md:text-center pt-0.5">
+                    <div className="text-gold-500 font-extrabold text-[11px] uppercase tracking-wider leading-tight">
+                      View All<br className="hidden md:inline" /> Photos
+                    </div>
+                    <ArrowRight size={14} className="text-gold-500 mt-1 md:mt-2 group-hover:translate-x-1 transition-transform duration-300" />
+                  </div>
+                </MotionLink>
+              </div>
             </div>
+
+            {/* Premium Creative CTA Banner (Fills the bottom blank space) */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-br from-[#0b1b26] to-[#040e14] border border-gold-500/15 rounded-3xl p-6 relative overflow-hidden shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mt-2"
+            >
+              {/* Decorative Glowing Circle */}
+              <div className="absolute right-0 top-0 w-32 h-32 bg-gold-500/5 rounded-full blur-[40px] pointer-events-none" />
+              <div className="absolute left-12 bottom-0 w-24 h-24 bg-islamic-green/5 rounded-full blur-[30px] pointer-events-none" />
+
+              {/* Text Details */}
+              <div className="relative z-10 max-w-lg">
+                <span className="text-[9px] font-bold text-gold-500 uppercase tracking-[0.2em] block mb-1">
+                  Custom Pilgrimage Planning
+                </span>
+                <h4 className="text-sm md:text-base font-playfair font-bold text-white mb-1.5 leading-snug">
+                  Planning a custom Umrah or group journey?
+                </h4>
+                <p className="text-[11px] text-white/75 leading-relaxed font-medium">
+                  Our expert advisors can curate personalized hotel stays, private group transfers, and custom schedules to meet your specific spiritual needs.
+                </p>
+              </div>
+
+              {/* Action Button */}
+              <div className="relative z-10 shrink-0 flex flex-wrap gap-3 w-full sm:w-auto">
+                <a 
+                  href="https://wa.me/918197593479?text=Assalamu%20Alaikum,%20I%20am%20interested%20in%20a%20custom%20Hajj/Umrah%20package."
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full sm:w-auto bg-islamic-green hover:bg-[#c5e063] text-navy-900 text-[11.5px] font-extrabold px-6 py-3.5 rounded-xl transition-all duration-300 shadow-md text-center hover:scale-[1.02] cursor-pointer"
+                >
+                  Customize Package
+                </a>
+              </div>
+            </motion.div>
           </div>
           
         </div>
